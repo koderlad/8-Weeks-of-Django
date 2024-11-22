@@ -55,8 +55,10 @@ ROOT_URLCONF = "job_portal.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
+        "DIRS": [
+            BASE_DIR / 'templates' #This includes global templates directory
+        ],
+        "APP_DIRS": True, #This tells Django to look for templates inside each app
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",

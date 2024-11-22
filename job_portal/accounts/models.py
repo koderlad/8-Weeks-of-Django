@@ -1,6 +1,17 @@
+from django.contrib.auth.models import User #Importing the built in django user model
 from django.db import models
 
-# Create your models here.
+#User Model
+class UserProfile(models.Model):
+    USER_TYPE_CHOICES = (
+        ('candidate', 'Candidate'),
+        ('employer', 'Employer') #Tuples
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+
+    def __str__(self):
+        return self.user.username
 
 #Employer models
 class Employer(models.Model):
